@@ -5,7 +5,7 @@ import pandas as pd
 from pandas import ExcelWriter
 import numpy as np
 
-userid = 'CHRIS.EVANS'
+userid = ' '
 
 user = str(os.getenv('KIBANA-ANALYTICS-USER'))
 pw = str(os.getenv('KIBANA-ANALYTICS-PASSWORD'))
@@ -14,7 +14,7 @@ pw = str(os.getenv('KIBANA-ANALYTICS-PASSWORD'))
 def es_auth(user, pw):
     try:
         es = Elasticsearch(
-            ['https://proddata-useranalytics-piwik-lexisadvance.route53.lexis.com/elasticsearch/'],
+            [' '],
             http_auth=(user, pw),
             port=443,
             use_ssl=True,
@@ -29,7 +29,7 @@ def es_auth(user, pw):
 
 
 def make_query_PSL(list_of_user_ids, es):
-    return es.search(index="live-lexispsl-2018*", body={
+    return es.search(index=" *", body={
         "size": 10000,
         "query": {
             "bool": {
@@ -97,7 +97,7 @@ def build_df_PSL(response):
 
 
 def make_query_lib(list_of_user_ids, es):
-    return es.search(index="live-rosettauklegal-2018*", body={
+    return es.search(index=" *", body={
         "size": 10000,
         "query": {
             "bool": {
